@@ -68,7 +68,7 @@ src/payload/         # Конфигурация PayloadCMS
 Основные переменные (см. [.env.example](./.env.example) и [CHECKLIST.md](./CHECKLIST.md)):
 
 - **Better Auth:** `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` (или `NEXT_PUBLIC_APP_URL`)
-- **MongoDB:** `MONGODB_URI`
+- **MongoDB:** `MONGODB_URI`. Если MongoDB запущен через `docker-compose` с `MONGO_INITDB_ROOT_*`, строка должна содержать логин и пароль: `mongodb://admin:PASSWORD@localhost:27017/coralsync?authSource=admin` (пароль из `docker-compose.yml`).
 - **Redis:** `REDIS_URL`
 - **PayloadCMS:** `PAYLOAD_SECRET`, `PAYLOAD_PUBLIC_SERVER_URL`
 - **Приложение:** `NEXT_PUBLIC_APP_URL`

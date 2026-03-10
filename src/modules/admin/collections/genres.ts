@@ -13,9 +13,6 @@ export const GenresCollection: CollectionConfig = {
   },
   fields: [
     { type: 'text', name: 'name', required: true },
-    // Принимаем slug только чтобы не ломать запросы: админка подмешивает его из списка (у старых документов в MongoDB он есть).
-    // В beforeChange выкидываем — в БД не сохраняем.
-    { type: 'text', name: 'slug', required: false, admin: { hidden: true, readOnly: true } },
     {
       type: 'select',
       options: [
@@ -30,18 +27,6 @@ export const GenresCollection: CollectionConfig = {
       label: 'К какому типу тайтла относится',
     },
   ],
-  hooks: {
-    beforeChange: [
-      ({ data }) => {
-        if (data && typeof data === 'object' && 'slug' in data) {
-          const next = { ...data }
-          delete (next as Record<string, unknown>).slug
-          return next
-        }
-        return data
-      },
-    ],
-  },
   access: {
     read: () => true,
   },

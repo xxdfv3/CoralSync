@@ -10,14 +10,5 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=fDRbswIC
 
-  redis:
-    image: redis:7-alpine
-    container_name: coralsync_cache
-    ports:
-      - "6379:6379"
-    volumes:
-      - coralsync_redis_data:/data
-
 volumes:
   coralsync_mongo_data:
-  coralsync_redis_data:

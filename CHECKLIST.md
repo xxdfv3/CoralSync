@@ -10,13 +10,11 @@
 - [ ] **npm** — `npm --version`
 - [ ] **Git** — `git --version`
 - [ ] **MongoDB** — `mongod --version` (или доступ к Atlas)
-- [ ] **Redis** — `redis-cli --version`
 
 ---
 
 ## Сервисы
 
-- [ ] **Redis** запущен: `redis-cli ping` → `PONG`
 - [ ] **MongoDB** запущен: `mongosh` подключается без ошибок
 
 ---
@@ -40,9 +38,8 @@
 - [ ] `BETTER_AUTH_SECRET` — секрет для подписи сессий (длинная случайная строка)
 - [ ] `BETTER_AUTH_URL` или `NEXT_PUBLIC_APP_URL` — базовый URL приложения (например `http://localhost:3000`)
 
-### Базы и кеш
+### Базы
 - [ ] `MONGODB_URI` — строка подключения к MongoDB
-- [ ] `REDIS_URL` — строка подключения к Redis (например `redis://localhost:6379`)
 
 ### PayloadCMS
 - [ ] `PAYLOAD_SECRET` — секрет Payload (не использовать значение из примера в продакшене)

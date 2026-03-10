@@ -36,7 +36,7 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Logo width={140} href="/" />
+            <Logo width={100} href="/" />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Your personal tracker for anime, movies, and series. Discover, track, and organize your watchlist.
             </p>
@@ -47,7 +47,7 @@ export function Footer() {
             <h3 className="mb-3 text-sm font-semibold text-foreground">Browse</h3>
             <ul className="space-y-2">
               {footerLinks.browse.map((link) => (
-                <li key={link.href}>
+                <li key={`browse-${link.label}`}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -63,7 +63,7 @@ export function Footer() {
             <h3 className="mb-3 text-sm font-semibold text-foreground">Genres</h3>
             <ul className="space-y-2">
               {footerLinks.genres.map((link) => (
-                <li key={link.href}>
+                <li key={`genre-${link.label}`}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -79,7 +79,7 @@ export function Footer() {
             <h3 className="mb-3 text-sm font-semibold text-foreground">Community</h3>
             <ul className="space-y-2">
               {footerLinks.community.map((link) => (
-                <li key={link.href}>
+                <li key={`community-${link.label}`}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -100,7 +100,7 @@ export function Footer() {
           <div className="flex gap-6">
             {footerLinks.legal.map((link) => (
               <Link
-                key={link.href}
+                key={`legal-${link.label}`}
                 href={link.href}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >

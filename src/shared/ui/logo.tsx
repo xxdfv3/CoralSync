@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const LOGO_PATH = '/logo.svg'
+const LOGO_PATH = '/headerlogo.svg'
 
 type LogoProps = {
   /** Width in pixels (height scales if only width set). */
@@ -19,7 +19,7 @@ type LogoProps = {
 }
 
 /**
- * CoralSync logo. Place your SVG file at public/logo.svg.
+ * CoralSync logo.
  * Use in header, home page, auth pages.
  */
 export function Logo({

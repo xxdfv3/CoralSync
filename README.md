@@ -7,7 +7,7 @@
 - **Frontend:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, ShadCN UI
 - **Архитектура:** Feature-Sliced Design (FSD)
 - **Auth:** [Better Auth](https://www.better-auth.com/) (email/password, опционально OAuth)
-- **CMS / данные:** PayloadCMS 3, MongoDB, Redis
+- **CMS / данные:** PayloadCMS 3, MongoDB
 - **Валидация:** Zod, React Hook Form + @hookform/resolvers
 
 ## Требования
@@ -15,7 +15,6 @@
 - Node.js 20+
 - npm
 - MongoDB (локально или Atlas)
-- Redis (локально или облако)
 
 ## Быстрый старт
 
@@ -25,11 +24,11 @@ npm install
 
 # Копирование переменных окружения
 cp .env.example .env.local
-# Отредактируйте .env.local (MONGODB_URI, REDIS_URL, BETTER_AUTH_*, PAYLOAD_SECRET и т.д.)
+# Отредактируйте .env.local (MONGODB_URI, BETTER_AUTH_*, PAYLOAD_SECRET и т.д.)
 
-# Запуск Redis и MongoDB (если локально)
-# redis-server
+# Запуск MongoDB (если локально)
 # mongod
+# или: docker compose up -d mongo
 
 # Разработка
 npm run dev
@@ -69,7 +68,6 @@ src/payload/         # Конфигурация PayloadCMS
 
 - **Better Auth:** `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL` (или `NEXT_PUBLIC_APP_URL`)
 - **MongoDB:** `MONGODB_URI`. Если MongoDB запущен через `docker-compose` с `MONGO_INITDB_ROOT_*`, строка должна содержать логин и пароль: `mongodb://admin:PASSWORD@localhost:27017/coralsync?authSource=admin` (пароль из `docker-compose.yml`).
-- **Redis:** `REDIS_URL`
 - **PayloadCMS:** `PAYLOAD_SECRET`, `PAYLOAD_PUBLIC_SERVER_URL`
 - **Приложение:** `NEXT_PUBLIC_APP_URL`
 

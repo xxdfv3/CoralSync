@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CoralSync - Track Your Anime, Movies & Series",
-  description: "Your personal tracker for anime, movies, and series. Discover new content, track your progress, and organize your watchlist.",
+  description:
+    "Your personal tracker for anime, movies, and series. Discover new content, track your progress, and organize your watchlist.",
 };
 
 export default function RootLayout({

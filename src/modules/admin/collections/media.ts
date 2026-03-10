@@ -8,7 +8,8 @@ export const MediaCollection: CollectionConfig = {
   },
   admin: {
     group: 'Каталог',
-    description: 'Медиафайлы (постеры)',
+    description:
+      'Медиафайлы (постеры, аватары). Перед релизом можно вынести в S3/R2/Blob.',
   },
   fields: [
     {
@@ -16,6 +17,21 @@ export const MediaCollection: CollectionConfig = {
       label: 'Описание',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'usage',
+      label: 'Назначение',
+      type: 'select',
+      defaultValue: 'catalog',
+      options: [
+        { label: 'Каталог (постер и т.д.)', value: 'catalog' },
+        { label: 'Аватар пользователя', value: 'avatar' },
+        { label: 'Баннер тайтла (зарезервировано)', value: 'title_banner' },
+      ],
+      admin: {
+        description:
+          'Для фильтрации в админке и будущей миграции в object storage.',
+      },
     },
   ],
   upload: true,

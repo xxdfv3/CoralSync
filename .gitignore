@@ -47,6 +47,8 @@ media
 # payload
 payload-types.ts
 
+# Аватары теперь в Payload Media (каталог media/ в корне — уже в .gitignore выше)
+
 # prettier
 .prettierignore
 .prettierrc

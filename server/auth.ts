@@ -7,6 +7,12 @@ const MONGODB_URI =
 const client = new MongoClient(MONGODB_URI);
 const db = client.db();
 
+const BASE_URL =
+  process.env.BETTER_AUTH_URL ||
+  process.env.NEXT_PUBLIC_APP_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+  "http://localhost:3000";
+
 /**
  * Better Auth instance.
  *
@@ -14,7 +20,7 @@ const db = client.db();
  * При standalone MongoDB без replica set при ошибках транзакций задать transaction: false в database.
  */
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL,
+  baseURL: BASE_URL,
   database: mongodbAdapter(db, {
     client,
     transaction: false, // standalone MongoDB (Docker без replica set) не поддерживает транзакции

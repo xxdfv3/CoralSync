@@ -1,25 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Force Node.js runtime to avoid Edge Runtime limitations with better-auth
-export const runtime = "nodejs";
-
 /**
- * Middleware for authentication.
- * 
- * Note: better-auth uses dynamic code evaluation which is not compatible with Edge Runtime.
- * We use a cookie-based check here and defer full session validation to the API routes/pages.
+ * Middleware для защиты роутов по cookie сессии better-auth.
+ * Работает в Edge Runtime — в файле нет импортов better-auth/Node-only API,
+ * только проверка наличия cookie `better-auth.session_token`.
  */
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   const isProtected =
     pathname.startsWith("/dashboard") ||
-    pathname.startsWith("/profile");
+    pathname.startsWith("/profile") ||
+    pathname.startsWith("/settings");
 
   const isAuthPage =
     pathname === "/sign-in" || pathname === "/sign-up";
 
-  // Check for session cookie (better-auth uses 'better-auth.session_token' cookie)
   const sessionCookie = request.cookies.get("better-auth.session_token");
   const hasSession = !!sessionCookie?.value;
 
@@ -44,6 +40,6 @@ export const config = {
     "/profile/:path*",
     "/sign-in",
     "/sign-up",
+    "/settings/:path*",
   ],
 };
-

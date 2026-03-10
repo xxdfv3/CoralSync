@@ -41,7 +41,7 @@ coralsync/
 │
 ├── server/                     # Серверная логика (вне FSD)
 │   ├── auth.ts
-│   └── utils/                  # mongodb.ts, redis.ts
+│   └── utils/                  # mongodb.ts
 │
 ├── src/                        # Дополнительные модули и конфигурации
 │   └── modules/
@@ -87,7 +87,6 @@ import { cn } from "@/shared/lib/utils"
 ### Импорт серверных утилит
 ```typescript
 import { connectDB } from "@/server/utils/mongodb"
-import { redis } from "@/server/utils/redis"
 ```
 
 ### Создание фичи

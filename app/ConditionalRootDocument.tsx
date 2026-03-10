@@ -1,7 +1,8 @@
-'use client'
+"use client";
 
-import { usePathname } from 'next/navigation'
-import { Toaster } from '@/shared/ui/sonner'
+import { usePathname } from "next/navigation";
+
+import { Toaster } from "@/shared/ui/sonner";
 
 /**
  * Для /admin* не рендерим html/body — их отдаёт Payload RootLayout.
@@ -11,14 +12,14 @@ export function ConditionalRootDocument({
   children,
   fontClassName,
 }: {
-  children: React.ReactNode
-  fontClassName: string
+  children: React.ReactNode;
+  fontClassName: string;
 }) {
-  const pathname = usePathname()
-  const isAdmin = pathname?.startsWith('/admin')
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
 
   if (isAdmin) {
-    return <>{children}</>
+    return <>{children}</>;
   }
 
   return (
@@ -28,5 +29,5 @@ export function ConditionalRootDocument({
         <Toaster richColors position="top-center" />
       </body>
     </html>
-  )
+  );
 }

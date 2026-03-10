@@ -13,3 +13,6 @@ export { ContentCard } from './home/ContentCard'
 export { ContentGrid } from './home/ContentGrid'
 export { ScheduleSection } from './home/ScheduleSection'
 export { GenreSection } from './home/GenreSection'
+
+// Collections page
+export { CollectionsContent } from './collections/CollectionsContent'

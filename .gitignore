@@ -39,6 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+media
 
 # cursor
 .cursor
+
+# payload
+payload-types.ts
+
+# prettier
+.prettierignore
+.prettierrc
+.prettierignore

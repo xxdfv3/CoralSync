@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { SignOutBlock } from '@/features/auth'
+
 /**
  * Home page composition (FSD views layer).
  * Renders the main landing content.
@@ -9,9 +11,12 @@ export function HomePage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between bg-white py-32 px-16 dark:bg-black sm:items-start">
+        <div className="absolute right-4 top-4">
+          <SignOutBlock />
+        </div>
         <Image
           className="dark:invert"
-          src="/next.svg"
+          src="/logo.svg"
           alt="Next.js logo"
           width={100}
           height={20}
@@ -48,7 +53,7 @@ export function HomePage() {
           >
             <Image
               className="dark:invert"
-              src="/vercel.svg"
+              src="/logo.svg"
               alt="Vercel logomark"
               width={16}
               height={16}

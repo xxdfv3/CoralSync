@@ -6,43 +6,54 @@
 
 ```
 coralsync/
-├── app/                    # Next.js App Router (роуты и layout)
+├── app/                        # Next.js App Router (слой App в FSD: маршрутизация)
 │   ├── layout.tsx
 │   ├── page.tsx
-│   └── globals.css
+│   ├── globals.css
+│   ├── (auth)/                 # Сегмент: маршруты авторизации (sign-in, sign-up)
+│   │   ├── layout.tsx
+│   │   ├── sign-in/page.tsx
+│   │   └── sign-up/page.tsx
+│   ├── (payload)/              # Сегмент: админка и API PayloadCMS
+│   │   ├── config.ts           # Конфиг Payload (или реэкспорт из src/modules/admin)
+│   │   ├── layout.tsx
+│   │   ├── admin/              # UI админ-панели (/admin)
+│   │   ├── api/                # REST API Payload (/api/...)
+│   │   └── custom.scss
+│   └── api/                    # API приложения (например Better Auth)
+│       └── auth/[...all]/route.ts
 │
-├── pages/                  # FSD: Pages layer (композиция страниц)
+├── pages/                      # FSD: Pages layer (композиция страниц)
 │   └── .gitkeep
-│
-├── widgets/                # FSD: Widgets layer (композитные UI блоки)
+├── widgets/                    # FSD: Widgets layer (композитные UI блоки)
 │   └── .gitkeep
-│
-├── features/               # FSD: Features layer (бизнес-фичи)
+├── features/                   # FSD: Features layer (бизнес-фичи)
 │   └── .gitkeep
-│
-├── entities/               # FSD: Entities layer (бизнес-сущности)
+├── entities/                   # FSD: Entities layer (бизнес-сущности)
 │   └── .gitkeep
+├── shared/                     # FSD: Shared layer (переиспользуемый код)
+│   ├── ui/
+│   ├── lib/
+│   ├── api/
+│   ├── config/
+│   ├── hooks/
+│   └── types/
 │
-├── shared/                 # FSD: Shared layer (переиспользуемый код)
-│   ├── ui/                 # UI компоненты (ShadCN)
-│   ├── lib/                # Утилиты (utils.ts)
-│   ├── api/                # API клиенты и конфиги
-│   ├── config/             # Конфигурации
-│   ├── hooks/              # React хуки
-│   └── types/              # TypeScript типы
+├── server/                     # Серверная логика (вне FSD)
+│   ├── auth.ts
+│   └── utils/                  # mongodb.ts, redis.ts
 │
-├── server/                 # Серверная логика
-│   ├── auth.ts             # Better Auth инстанс
-│   └── utils/              # Утилиты (mongodb.ts, redis.ts)
+├── src/                        # Дополнительные модули и конфигурации
+│   └── modules/
+│       └── admin/              # Модуль админки (Payload): конфиг и коллекции
+│           ├── config.ts      # Опционально: конфиг здесь, в app/(payload) — реэкспорт
+│           └── collections/   # Коллекции Payload (Media, Genres, Titles, ...)
 │
-├── src/                    # Дополнительные конфигурации
-│   └── payload/            # PayloadCMS конфигурация
-│
-├── middleware.ts           # Next.js middleware (Better Auth защита роутов)
-├── next.config.js          # Next.js конфигурация
-├── tailwind.config.ts      # Tailwind CSS конфигурация
-├── tsconfig.json           # TypeScript конфигурация
-└── components.json         # ShadCN UI конфигурация
+├── middleware.ts
+├── next.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+└── components.json
 ```
 
 ## Правила импортов (FSD)
@@ -95,11 +106,16 @@ import { Title } from "@/entities/title"
 
 ## Бэкенд структура
 
-Серверная логика организована в `server/`:
+Серверная логика организована в `server/` (вне FSD-слоёв):
 
-- `server/utils/` - утилиты для работы с БД и кешем
-- `server/api/` - API роуты (если нужны)
-- `server/config/` - конфигурации сервера
+- `server/utils/` — утилиты для работы с БД и кешем
+- `server/api/` — API роуты (если нужны)
+- `server/config/` — конфигурации сервера
+
+Админка и CMS (Payload) объединены в модуль:
+
+- **`app/(payload)/`** — маршруты: UI админки (`/admin`), REST API Payload, layout и конфиг (или реэкспорт из `src/modules/admin`).
+- **`src/modules/admin/`** — конфиг Payload и коллекции; слой App только подключает их через импорты.
 
 ## Следующие шаги
 

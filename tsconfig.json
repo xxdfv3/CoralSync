@@ -25,7 +25,7 @@
       "@/*": [
         "./*"
       ],
-      "@payload-config": ["./app/(payload)/config.ts"],
+      "@payload-config": ["./src/modules/admin/payload.config.ts"],
       "@/shared/*": ["./src/shared/*"],
       "@/entities/*": ["./src/entities/*"],
       "@/features/*": ["./src/features/*"],

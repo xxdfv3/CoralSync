@@ -22,7 +22,7 @@ export function ConditionalRootDocument({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={fontClassName}>
         {children}
         <Toaster richColors position="top-center" />
